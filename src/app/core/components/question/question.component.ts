@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common'
     standalone: true,
     imports: [NgClass],
     templateUrl: './question.component.html',
-    styleUrl: './question.component.css',
+    styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
     public question = input<ChainQuestion>()

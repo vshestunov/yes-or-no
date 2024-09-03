@@ -7,9 +7,14 @@ import { HeaderComponent } from './core/components'
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, BodyComponent, FooterComponent, HeaderComponent],
+    imports: [
+        RouterOutlet,
+        BodyComponent,
+        FooterComponent,
+        HeaderComponent,
+    ],
     templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
+    styleUrl: './app.component.scss',
 })
 export class AppComponent {
     title = 'yes-or-no'

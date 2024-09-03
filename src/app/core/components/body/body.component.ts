@@ -6,6 +6,6 @@ import { RouterOutlet } from '@angular/router'
     standalone: true,
     imports: [RouterOutlet],
     templateUrl: './body.component.html',
-    styleUrl: './body.component.css',
+    styleUrl: './body.component.scss',
 })
 export class BodyComponent {}

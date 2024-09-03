@@ -14,7 +14,7 @@ import { ResultComponent } from '../result/result.component'
     standalone: true,
     imports: [NgClass, QuestionComponent, ResultComponent],
     templateUrl: './answers.component.html',
-    styleUrl: './answers.component.css',
+    styleUrl: './answers.component.scss',
 })
 export class AnswersComponent {
     public question = input<Question>()

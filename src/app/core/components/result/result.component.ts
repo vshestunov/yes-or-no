@@ -6,7 +6,7 @@ import { NgClass } from '@angular/common'
     standalone: true,
     imports: [NgClass],
     templateUrl: './result.component.html',
-    styleUrl: './result.component.css',
+    styleUrl: './result.component.scss',
 })
 export class ResultComponent {
     public result = input<string>()
