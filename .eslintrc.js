@@ -26,27 +26,60 @@ module.exports = {
                 'plugin:prettier/recommended',
             ],
             rules: {
-                'prefer-const': ['error', { destructuring: 'all' }],
-                'max-len': ['error', { code: 60 }],
-                eqeqeq: ['error', 'always', { null: 'ignore' }],
-                '@typescript-eslint/no-confusing-non-null-assertion': 'error',
-                '@typescript-eslint/no-misused-promises': ['warn', { checksVoidReturn: false }],
-                '@typescript-eslint/no-floating-promises': 'off',
-                '@typescript-eslint/no-explicit-any': 'error',
-                '@typescript-eslint/no-require-imports': 'error',
-                '@typescript-eslint/prefer-includes': 'error',
-                '@typescript-eslint/prefer-nullish-coalescing': 'off',
-                '@typescript-eslint/prefer-optional-chain': 'error',
-                '@typescript-eslint/unbound-method': ['warn', { ignoreStatic: true }],
-                '@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: true }],
-                '@typescript-eslint/restrict-template-expressions': ['error', { allowAny: true, allowNumber: true }],
+                'prefer-const': [
+                    'error',
+                    { destructuring: 'all' },
+                ],
+                'max-len': ['error', { code: 126 }],
+                eqeqeq: [
+                    'error',
+                    'always',
+                    { null: 'ignore' },
+                ],
+                '@typescript-eslint/no-confusing-non-null-assertion':
+                    'error',
+                '@typescript-eslint/no-misused-promises': [
+                    'warn',
+                    { checksVoidReturn: false },
+                ],
+                '@typescript-eslint/no-floating-promises':
+                    'off',
+                '@typescript-eslint/no-explicit-any':
+                    'error',
+                '@typescript-eslint/no-require-imports':
+                    'error',
+                '@typescript-eslint/prefer-includes':
+                    'error',
+                '@typescript-eslint/prefer-nullish-coalescing':
+                    'off',
+                '@typescript-eslint/prefer-optional-chain':
+                    'error',
+                '@typescript-eslint/unbound-method': [
+                    'warn',
+                    { ignoreStatic: true },
+                ],
+                '@typescript-eslint/require-array-sort-compare':
+                    ['error', { ignoreStringArrays: true }],
+                '@typescript-eslint/restrict-template-expressions':
+                    [
+                        'error',
+                        {
+                            allowAny: true,
+                            allowNumber: true,
+                        },
+                    ],
                 'dot-notation': 'off',
                 '@typescript-eslint/dot-notation': 'error',
                 'no-unused-expressions': 'off',
-                '@typescript-eslint/no-unused-expressions': 'error',
+                '@typescript-eslint/no-unused-expressions':
+                    'error',
                 'no-unused-vars': 'off',
-                '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
-                '@typescript-eslint/no-unsafe-member-access': 'error',
+                '@typescript-eslint/no-unused-vars': [
+                    'error',
+                    { ignoreRestSiblings: true },
+                ],
+                '@typescript-eslint/no-unsafe-member-access':
+                    'error',
                 '@angular-eslint/no-output-native': 'off',
                 '@angular-eslint/directive-selector': [
                     'error',
@@ -89,30 +122,40 @@ module.exports = {
                     },
                     {
                         selector: 'enumMember',
-                        format: ['PascalCase', 'UPPER_CASE'],
+                        format: [
+                            'PascalCase',
+                            'UPPER_CASE',
+                        ],
                     },
                 ],
-                '@typescript-eslint/member-delimiter-style': [
-                    'error',
-                    {
-                        multiline: {
-                            delimiter: 'none',
-                            requireLast: true,
+                '@typescript-eslint/member-delimiter-style':
+                    [
+                        'error',
+                        {
+                            multiline: {
+                                delimiter: 'none',
+                                requireLast: true,
+                            },
+                            singleline: {
+                                delimiter: 'semi',
+                                requireLast: false,
+                            },
                         },
-                        singleline: {
-                            delimiter: 'semi',
-                            requireLast: false,
-                        },
-                    },
-                ],
+                    ],
                 curly: ['error', 'all'],
                 semi: 'off',
-                '@typescript-eslint/semi': ['error', 'never'],
+                '@typescript-eslint/semi': [
+                    'error',
+                    'never',
+                ],
                 'no-empty-function': 'off',
                 '@typescript-eslint/no-empty-function': [
                     'error',
                     {
-                        allow: ['arrowFunctions', 'functions'],
+                        allow: [
+                            'arrowFunctions',
+                            'functions',
+                        ],
                     },
                 ],
                 'max-classes-per-file': ['error', 1],
@@ -120,39 +163,51 @@ module.exports = {
                 '@typescript-eslint/no-magic-numbers': [
                     'error',
                     {
-                        ignore: [-1, 0, 1, 2, 5, 7, 10, 16, 24, 50, 60, 100, 180, 360, 1000],
+                        ignore: [
+                            -1, 0, 1, 2, 5, 7, 10, 16, 24,
+                            50, 60, 100, 180, 360, 1000,
+                        ],
                         ignoreNumericLiteralTypes: true,
                         ignoreDefaultValues: true,
                         ignoreEnums: true,
                         ignoreReadonlyClassProperties: true,
                     },
                 ],
-                '@typescript-eslint/explicit-member-accessibility': [
-                    'error',
-                    {
-                        accessibility: 'explicit',
-                        overrides: {
-                            constructors: 'no-public',
+                '@typescript-eslint/explicit-member-accessibility':
+                    [
+                        'error',
+                        {
+                            accessibility: 'explicit',
+                            overrides: {
+                                constructors: 'no-public',
+                            },
                         },
-                    },
-                ],
-                '@typescript-eslint/explicit-function-return-type': [
+                    ],
+                '@typescript-eslint/explicit-function-return-type':
+                    [
+                        'error',
+                        {
+                            allowExpressions: true,
+                        },
+                    ],
+                'prettier/prettier': [
                     'error',
-                    {
-                        allowExpressions: true,
-                    },
+                    prettierConfig,
                 ],
-                'prettier/prettier': ['error', prettierConfig],
             },
         },
         {
             files: ['*.html'],
-            extends: ['plugin:@angular-eslint/template/recommended'],
+            extends: [
+                'plugin:@angular-eslint/template/recommended',
+            ],
             rules: {},
         },
         {
             files: ['*.html'],
-            excludedFiles: ['*inline-template-*.component.html'],
+            excludedFiles: [
+                '*inline-template-*.component.html',
+            ],
             extends: ['plugin:prettier/recommended'],
             rules: {
                 'prettier/prettier': [
@@ -167,7 +222,8 @@ module.exports = {
         {
             files: ['*.spec.ts'],
             rules: {
-                '@typescript-eslint/no-unsafe-member-access': 'off',
+                '@typescript-eslint/no-unsafe-member-access':
+                    'off',
                 '@typescript-eslint/no-unsafe-call': 'off',
                 '@typescript-eslint/unbound-method': 'off',
             },

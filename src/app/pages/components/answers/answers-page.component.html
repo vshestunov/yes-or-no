@@ -1,7 +1,14 @@
 <div class="answers-page">
     <h1>Look at your flow</h1>
-    <yon-answers
-        [question]="questions()[0]"
-        [answers]="answers()"
-    ></yon-answers>
+    @if (questions()?.length) {
+        <yon-answers
+            [question]="questions()[0]"
+            [answers]="answers()"
+        ></yon-answers>
+    } @else {
+        <h2>
+            Nothing to show yet. Answer some
+            <a href="questions">questions</a> first
+        </h2>
+    }
 </div>

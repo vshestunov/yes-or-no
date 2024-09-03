@@ -43,13 +43,16 @@ export class QuestionsEffects {
         )
     )
 
-    retakeQuestions$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(QuestionsActions.retakeQuestions),
-            tap(() => {
-                console.log(123)
-                this.router.navigateByUrl('questions')
-            })
-        )
+    retakeQuestions$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(QuestionsActions.retakeQuestions),
+                tap(() => {
+                    this.router
+                        .navigateByUrl('questions')
+                        .then()
+                })
+            ),
+        { dispatch: false }
     )
 }
