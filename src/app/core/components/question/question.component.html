@@ -1,0 +1,18 @@
+<div class="question">
+    <div class="question__value">
+        {{ question().question }}
+    </div>
+    <div class="question__answers">
+        @for (answer of question().answers; track $index) {
+            <button
+                class="app-button"
+                [ngClass]="
+                    answer.value.toLowerCase() + '-button'
+                "
+                (click)="questionAnswered.emit(answer)"
+            >
+                {{ answer.value }}
+            </button>
+        }
+    </div>
+</div>

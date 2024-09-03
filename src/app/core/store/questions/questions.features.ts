@@ -1,12 +1,17 @@
 import { Answer, Question } from '../../models'
-import { createReducer, createSelector, on } from '@ngrx/store'
+import {
+    createReducer,
+    createSelector,
+    on,
+} from '@ngrx/store'
 import * as QuestionsActions from './questions.actions'
 import { EntityState } from '../../models/entity-state'
 import { EntityStatus } from '../../enums'
 
 export interface QuestionsState {
     questions: EntityState<Question[]>
-    answers: EntityState<Answer[]>
+    activeQuestion: Question
+    answers: Answer[]
 }
 
 const initialState: QuestionsState = {
@@ -14,10 +19,8 @@ const initialState: QuestionsState = {
         status: EntityStatus.Initial,
         value: [],
     },
-    answers: {
-        status: EntityStatus.Initial,
-        value: [],
-    },
+    activeQuestion: null,
+    answers: [],
 }
 
 export const stateFeatureKey = 'questionsAnswers'
@@ -30,17 +33,22 @@ export const questionsFeature = createReducer(
                 value: [],
                 status: EntityStatus.Loading,
             },
+            activeQuestion: null,
         }
     }),
-    on(QuestionsActions.getQuestionsSuccess, (state, { questions }) => {
-        return {
-            ...state,
-            questions: {
-                value: questions,
-                status: EntityStatus.Loaded,
-            },
+    on(
+        QuestionsActions.getQuestionsSuccess,
+        (state, { questions }) => {
+            return {
+                ...state,
+                questions: {
+                    value: questions,
+                    status: EntityStatus.Loaded,
+                },
+                activeQuestion: questions[0],
+            }
         }
-    }),
+    ),
     on(QuestionsActions.getQuestionsError, (state) => {
         return {
             ...state,
@@ -49,12 +57,57 @@ export const questionsFeature = createReducer(
                 status: EntityStatus.Loaded,
             },
         }
+    }),
+    on(QuestionsActions.saveAnswer, (state, { answer }) => {
+        const savedAnswer: Answer = {
+            id: state.activeQuestion.id,
+            answer: answer.value,
+        }
+        return {
+            ...state,
+            activeQuestion: answer.nextStep,
+            answers: [...state.answers, savedAnswer],
+        }
+    }),
+    on(QuestionsActions.retakeQuestions, (state) => {
+        return {
+            ...state,
+            activeQuestion: state.questions.value[0],
+            answers: [],
+        }
     })
 )
 
-export const selectQuestions = (state: { [key: string]: QuestionsState }) => state[stateFeatureKey].questions
-export const selectQuestionsValue = createSelector(selectQuestions, (questions) => questions?.value)
+export const selectQuestions = (state: QuestionsState) =>
+    (state as unknown as { [key: string]: QuestionsState })[
+        stateFeatureKey
+    ].questions
+export const selectQuestionsValue = createSelector(
+    selectQuestions,
+    (questions) => questions?.value
+)
 export const selectQuestionsLoading = createSelector(
     selectQuestions,
-    (questions) => questions?.status === EntityStatus.Loading
+    (questions) =>
+        questions?.status === EntityStatus.Loading
+)
+
+export const selectActiveQuestion = (
+    state: QuestionsState
+) =>
+    (state as unknown as { [key: string]: QuestionsState })[
+        stateFeatureKey
+    ].activeQuestion
+export const selectActiveQuestionValue = createSelector(
+    selectActiveQuestion,
+    (question) => question
+)
+
+export const selectAnswers = (state: QuestionsState) =>
+    (state as unknown as { [key: string]: QuestionsState })[
+        stateFeatureKey
+    ].answers
+export const selectAnswersValue = createSelector(
+    selectAnswers,
+    (answers) => answers
 )

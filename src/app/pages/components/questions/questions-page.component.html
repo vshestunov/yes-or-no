@@ -1,1 +1,21 @@
-<p>questions works!</p>
+<div class="questions-page">
+    <h1>Let's fix any of your problem!</h1>
+    <div class="questions-page__content">
+        @if (isChainQuestion()) {
+            <yon-question
+                [question]="chainQuestion()"
+                (questionAnswered)="
+                    questionAnswered($event)
+                "
+            ></yon-question>
+        }
+        @if (isResult()) {
+            <yon-result
+                [result]="result().result"
+                [showActionButtons]="true"
+                (retakeQuestions)="retakeQuestions()"
+                (openQuestionsTree)="openQuestionsTree()"
+            ></yon-result>
+        }
+    </div>
+</div>

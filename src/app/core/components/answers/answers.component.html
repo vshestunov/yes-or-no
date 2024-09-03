@@ -1,0 +1,44 @@
+<div class="answers">
+    @if (getChainQuestion(question()); as chainQuestion) {
+        <div class="answers__question">
+            <div>{{ chainQuestion.question }}</div>
+            <div class="answers__question-wrapper">
+                @for (
+                    answer of chainQuestion.answers;
+                    track $index
+                ) {
+                    <div
+                        class="answers__wrapper"
+                        [class.selected]="
+                            isAnswerSelected(answer)
+                        "
+                    >
+                        <div class="answers__value">
+                            {{ answer.value }}
+                        </div>
+                        @if (
+                            getChainQuestion(
+                                answer.nextStep
+                            );
+                            as answerQuestion
+                        ) {
+                            <yon-answers
+                                [question]="answerQuestion"
+                                [answers]="answers()"
+                            ></yon-answers>
+                        } @else {
+                            <yon-result
+                                [result]="
+                                    getResult(
+                                        answer.nextStep
+                                    )
+                                "
+                                [showActionButtons]="false"
+                            ></yon-result>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

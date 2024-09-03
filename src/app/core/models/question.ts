@@ -1,17 +1,21 @@
-import { YesNo } from '../enums/yes-no'
+import { YesNo } from '../enums'
+
+export interface QuestionAnswer {
+    value: YesNo
+    nextStep: Question
+}
 
 export interface BaseQuestion {
-    level: number
-    question: string
-    answers: YesNo[]
+    id: number
 }
 
 export interface ChainQuestion extends BaseQuestion {
-    nextQuestions: Question[]
+    question: string
+    answers: QuestionAnswer[]
 }
 
 export interface FinalQuestion extends BaseQuestion {
-    results: string[]
+    result: string
 }
 
 export type Question = ChainQuestion | FinalQuestion

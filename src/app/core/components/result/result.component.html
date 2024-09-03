@@ -1,0 +1,21 @@
+<div class="result">
+    <div class="result__value">
+        {{ result() }}
+    </div>
+    @if (showActionButtons()) {
+        <div class="result__actions">
+            <button
+                class="app-button yes-button"
+                (click)="openQuestionsTree.emit()"
+            >
+                OPEN QUESTIONS TREE
+            </button>
+            <button
+                class="app-button yes-button"
+                (click)="retakeQuestions.emit()"
+            >
+                RETAKE QUESTIONS
+            </button>
+        </div>
+    }
+</div>
