@@ -1,0 +1,12 @@
+.result {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.result__actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}

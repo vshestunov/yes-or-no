@@ -1,20 +1,7 @@
-import {
-    Component,
-    computed,
-    OnInit,
-    Signal,
-} from '@angular/core'
+import { Component, computed, OnInit, Signal } from '@angular/core'
 import { QuestionsFacadeService } from '../../../core/store/questions/questions-facade.service'
-import {
-    ChainQuestion,
-    FinalQuestion,
-    Question,
-    QuestionAnswer,
-} from '../../../core/models'
-import {
-    QuestionComponent,
-    ResultComponent,
-} from '../../../core/components'
+import { ChainQuestion, FinalQuestion, Question, QuestionAnswer } from '../../../core/models'
+import { QuestionComponent, ResultComponent } from '../../../core/components'
 
 @Component({
     selector: 'yon-questions-page',
@@ -26,18 +13,16 @@ import {
 export class QuestionsPageComponent implements OnInit {
     public questions: Signal<Question[]>
     public activeQuestion: Signal<Question>
-    public isChainQuestion = computed(
-        () => 'question' in this.activeQuestion()
-    )
-    public chainQuestion = computed(
-        () => this.activeQuestion() as ChainQuestion
-    )
-    public isResult = computed(
-        () => 'result' in this.activeQuestion()
-    )
-    public result = computed(
-        () => this.activeQuestion() as FinalQuestion
-    )
+    public isChainQuestion = computed(() => 'question' in this.activeQuestion())
+    public chainQuestion = computed(() => {
+        const chainQuestion = this.activeQuestion() as ChainQuestion
+        return {
+            ...chainQuestion,
+            answers: [...chainQuestion.answers].sort((a, b) => a.value.localeCompare(b.value)),
+        }
+    })
+    public isResult = computed(() => 'result' in this.activeQuestion())
+    public result = computed(() => this.activeQuestion() as FinalQuestion)
     public loading: Signal<boolean>
 
     constructor(private facade: QuestionsFacadeService) {}
@@ -49,9 +34,7 @@ export class QuestionsPageComponent implements OnInit {
         this.facade.getQuestions()
     }
 
-    public questionAnswered(
-        questionAnswer: QuestionAnswer
-    ): void {
+    public questionAnswered(questionAnswer: QuestionAnswer): void {
         this.facade.saveAnswer(questionAnswer)
     }
 

@@ -1,21 +1,11 @@
 <div class="result">
-    <div class="result__value">
+    <h4 class="app-h4">
         {{ result() }}
-    </div>
+    </h4>
     @if (showActionButtons()) {
         <div class="result__actions">
-            <button
-                class="app-button yes-button"
-                (click)="openQuestionsTree.emit()"
-            >
-                OPEN QUESTIONS TREE
-            </button>
-            <button
-                class="app-button yes-button"
-                (click)="retakeQuestions.emit()"
-            >
-                RETAKE QUESTIONS
-            </button>
+            <button class="app-button no-button" (click)="retakeQuestions.emit()">RETAKE QUESTIONS</button>
+            <button class="app-button yes-button" (click)="openQuestionsTree.emit()">OPEN FLOW</button>
         </div>
     }
 </div>
