@@ -14,6 +14,7 @@ import {
 } from 'rxjs/operators'
 import { QuestionsApiService } from '../../api/questions-api.service'
 import { Router } from '@angular/router'
+import { AppRoutes } from '../../enums'
 
 @Injectable()
 export class QuestionsEffects {
@@ -49,7 +50,7 @@ export class QuestionsEffects {
                 ofType(QuestionsActions.retakeQuestions),
                 tap(() => {
                     this.router
-                        .navigateByUrl('questions')
+                        .navigateByUrl(AppRoutes.Questions)
                         .then()
                 })
             ),

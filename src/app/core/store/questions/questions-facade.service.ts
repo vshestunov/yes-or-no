@@ -11,6 +11,7 @@ import * as QuestionsActions from './questions.actions'
 import { toSignal } from '@angular/core/rxjs-interop'
 import { Answer, QuestionAnswer } from '../../models'
 import { Router } from '@angular/router'
+import { AppRoutes } from '../../enums'
 
 @Injectable({
     providedIn: 'root',
@@ -50,7 +51,7 @@ export class QuestionsFacadeService {
     }
 
     public openQuestionsTree(): void {
-        this.router.navigateByUrl('answers')
+        this.router.navigateByUrl(AppRoutes.Answers).then()
     }
 
     public retakeQuestions(): void {

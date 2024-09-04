@@ -1,12 +1,13 @@
 import { YesNo } from '../enums'
 
 export interface QuestionAnswer {
+    id: string
     value: YesNo
     nextStep: Question
 }
 
 export interface BaseQuestion {
-    id: number
+    id: string
 }
 
 export interface ChainQuestion extends BaseQuestion {

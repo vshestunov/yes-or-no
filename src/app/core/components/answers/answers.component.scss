@@ -1,3 +1,37 @@
-.answers__question-wrapper {
+:host {
+    width: 100%;
+}
+
+.answers {
+    width: 100%;
+}
+
+.answers__question {
+    text-align: center;
+}
+
+.answers__question-answer {
     display: flex;
+}
+
+.question-answer__wrapper {
+    width: 50%;
+}
+
+.question-answer__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.question-answer__value {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 8px;
+
+    &.selected {
+        border-color: green;
+        background-color: aqua;
+    }
 }

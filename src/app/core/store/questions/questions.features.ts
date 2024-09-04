@@ -60,7 +60,7 @@ export const questionsFeature = createReducer(
     }),
     on(QuestionsActions.saveAnswer, (state, { answer }) => {
         const savedAnswer: Answer = {
-            id: state.activeQuestion.id,
+            id: answer.id,
             answer: answer.value,
         }
         return {

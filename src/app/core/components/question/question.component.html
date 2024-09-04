@@ -1,17 +1,21 @@
 <div class="question">
-    <div class="question__value">
+    <h4 class="question__value">
         {{ question().question }}
-    </div>
+    </h4>
     <div class="question__answers">
         @for (answer of question().answers; track $index) {
             <button
                 class="app-button"
-                [ngClass]="
-                    answer.value.toLowerCase() + '-button'
-                "
-                (click)="questionAnswered.emit(answer)"
+                [ngClass]="answer.value.toLowerCase() + '-button'"
+                [class.disabled]="showLoaderForId()"
+                [disabled]="showLoaderForId()"
+                (click)="answerSelected(answer)"
             >
-                {{ answer.value }}
+                @if (showLoaderForId() === answer.id) {
+                    <span class="app-loader" [class.inverted-colors]="answer.value === YesNo.YES"></span>
+                } @else {
+                    {{ answer.value }}
+                }
             </button>
         }
     </div>

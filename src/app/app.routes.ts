@@ -8,10 +8,11 @@ import {
 import { provideEffects } from '@ngrx/effects'
 import { QuestionsEffects } from './core/store/questions/questions.effects'
 import { AnswersPageComponent } from './pages/components/answers/answers-page.component'
+import { AppRoutes } from './core/enums'
 
 export const routes: Routes = [
     {
-        path: 'questions',
+        path: AppRoutes.Questions,
         loadComponent: () => QuestionsPageComponent,
         providers: [
             provideState({
@@ -22,7 +23,7 @@ export const routes: Routes = [
         ],
     },
     {
-        path: 'answers',
+        path: AppRoutes.Answers,
         loadComponent: () => AnswersPageComponent,
         providers: [
             provideState({
@@ -31,5 +32,9 @@ export const routes: Routes = [
             }),
             provideEffects(QuestionsEffects),
         ],
+    },
+    {
+        path: '**',
+        redirectTo: AppRoutes.Questions,
     },
 ]

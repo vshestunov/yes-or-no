@@ -1,0 +1,12 @@
+.question {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.question__answers {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}

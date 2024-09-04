@@ -33,8 +33,10 @@ export class AnswersComponent {
     }
 
     public isAnswerSelected(
-        answer: QuestionAnswer
+        checkedAnswer: QuestionAnswer
     ): boolean {
-        return false
+        return this.answers().some(
+            (answer) => answer.id === checkedAnswer.id
+        )
     }
 }

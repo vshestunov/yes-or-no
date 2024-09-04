@@ -1,14 +1,12 @@
 <div class="answers-page">
     <h1>Look at your flow</h1>
     @if (questions()?.length) {
-        <yon-answers
-            [question]="questions()[0]"
-            [answers]="answers()"
-        ></yon-answers>
+        <yon-answers [question]="questions()[0]" [answers]="answers()"></yon-answers>
+        <button class="app-button yes-button" (click)="retakeQuestions()">RETAKE QUESTIONS</button>
     } @else {
         <h2>
             Nothing to show yet. Answer some
-            <a href="questions">questions</a> first
+            <a [href]="questionsLink">questions</a> first
         </h2>
     }
 </div>

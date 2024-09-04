@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { QuestionsFacadeService } from './questions-facade.service';
+import { QuestionsFacadeService } from './questions-facade.service'
 
 describe('QuestionsFacadeService', () => {
-  let service: QuestionsFacadeService;
+    let service: QuestionsFacadeService
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(QuestionsFacadeService);
-  });
+    beforeEach(() => {
+        TestBed.configureTestingModule({})
+        service = TestBed.inject(QuestionsFacadeService)
+    })
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    it('should be created', () => {
+        expect(service).toBeTruthy()
+    })
+})
