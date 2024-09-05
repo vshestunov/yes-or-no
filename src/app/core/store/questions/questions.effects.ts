@@ -19,7 +19,6 @@ export class QuestionsEffects {
         this.actions$.pipe(
             ofType(questionsActions.getQuestions),
             exhaustMap(() => {
-                console.log(123)
                 return this.api.getQuestions().pipe(
                     map((questions) => questionsActions.getQuestionsSuccess({ questions })),
                     catchError(() => of(questionsActions.getQuestionsError()))

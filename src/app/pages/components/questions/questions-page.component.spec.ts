@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { QuestionsPageComponent } from './questions-page.component'
 import { QuestionsFacadeService } from '../../../core/store/questions/questions-facade.service'
 import { QuestionComponent, ResultComponent } from '../../../core/components'
-import { ChainQuestion, FinalQuestion, QuestionAnswer } from '../../../core/models'
+import { ChainQuestion, QuestionAnswer } from '../../../core/models'
 import { signal } from '@angular/core'
 import { YesNo } from '../../../core/enums'
 
@@ -20,7 +20,7 @@ describe('QuestionsPageComponent', () => {
                 questionsLoading: signal(false),
                 activeQuestion: signal({}),
             }
-        )
+        ) as QuestionsFacadeService
 
         await TestBed.configureTestingModule({
             imports: [QuestionsPageComponent, QuestionComponent, ResultComponent],

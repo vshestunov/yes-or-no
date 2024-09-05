@@ -2,6 +2,7 @@ import * as questionsActions from '../questions.actions'
 import { questionsFeature, QuestionsState } from '../questions.features'
 import { EntityStatus, YesNo } from '../../../enums'
 import { Question, QuestionAnswer } from '../../../models'
+import { Action } from '@ngrx/store'
 
 describe('Questions Reducer', () => {
     const initialState: QuestionsState = {
@@ -14,9 +15,8 @@ describe('Questions Reducer', () => {
     }
 
     it('should return the initial state', () => {
-        const action = {} as any
+        const action = {} as Action<string>
         const state = questionsFeature(initialState, action)
-
         expect(state).toEqual(initialState)
     })
 

@@ -3,7 +3,7 @@ const stylistic = require('@stylistic/eslint-plugin')
 
 module.exports = {
     root: true,
-    ignorePatterns: ['projects/**/*'],
+    ignorePatterns: ['projects/**/*', 'coverage/**/*'],
     parserOptions: {
         ecmaVersion: 2021,
     },

@@ -13,7 +13,7 @@ export const QUESTION_CHANGE_TIMEOUT = 500
     styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
-    @Input() question: ChainQuestion
+    @Input() public question: ChainQuestion
     public questionAnswered = output<QuestionAnswer>()
 
     public showLoaderForId = signal<string>(null)

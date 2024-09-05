@@ -15,7 +15,7 @@ describe('AnswersPageComponent', () => {
         const facadeSpy = jasmine.createSpyObj('QuestionsFacadeService', ['retakeQuestions'], {
             questions: signal([]),
             answers: signal([]),
-        })
+        }) as QuestionsFacadeService
 
         await TestBed.configureTestingModule({
             imports: [AnswersPageComponent, QuestionComponent, ResultComponent, AnswersComponent],
