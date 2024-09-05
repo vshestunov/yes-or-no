@@ -22,7 +22,7 @@ export class QuestionsPageComponent implements OnInit {
         }
     })
     public isResult = computed(() => 'result' in this.activeQuestion())
-    public result = computed(() => this.activeQuestion() as FinalQuestion)
+    public finalQuestion = computed(() => this.activeQuestion() as FinalQuestion)
     public loading: Signal<boolean>
 
     constructor(private facade: QuestionsFacadeService) {}

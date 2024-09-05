@@ -2,3 +2,7 @@
 @import "variables";
 @import "text";
 @import "loader";
+
+body {
+    background-color: $body-bg;
+}

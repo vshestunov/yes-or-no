@@ -1,3 +1,5 @@
+@import "variables";
+
 :host {
     width: 100%;
 }
@@ -7,7 +9,30 @@
 }
 
 .answers__question {
+    position: relative;
     text-align: center;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 56px;
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        background-color: $secondary-color-2;
+        z-index: 0;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        width: 2px;
+        height: 40px;
+        background-color: $secondary-color-2;
+        z-index: 0;
+    }
 }
 
 .answers__question-answer {
@@ -26,12 +51,27 @@
 }
 
 .question-answer__value {
+    position: relative;
     border: 1px solid black;
     border-radius: 4px;
     padding: 8px;
+    background-color: #fff;
+    z-index: 2;
 
     &.selected {
         border-color: green;
-        background-color: aqua;
+        background-color: $primary-color-1;
+        color: #fff;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 36px;
+        left: 50%;
+        width: 2px;
+        height: 32px;
+        background-color: $secondary-color-2;
+        z-index: 0;
     }
 }
