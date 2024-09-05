@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
-
-import { QuestionsApiService } from './questions-api.service'
+import { MOCK_QUESTIONS, QuestionsApiService } from './questions-api.service'
+import { Question } from '../models'
 
 describe('QuestionsApiService', () => {
     let service: QuestionsApiService
@@ -12,5 +12,12 @@ describe('QuestionsApiService', () => {
 
     it('should be created', () => {
         expect(service).toBeTruthy()
+    })
+
+    it('should return the mock questions', (done) => {
+        service.getQuestions().subscribe((questions: Question[]) => {
+            expect(questions).toEqual(MOCK_QUESTIONS)
+            done()
+        })
     })
 })

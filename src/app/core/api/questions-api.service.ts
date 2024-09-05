@@ -5,7 +5,7 @@ import { YesNo } from '../enums'
 
 const RELAX_ANSWER = 'Everything is ok, relax.'
 
-const MOCK_QUESTIONS: Question[] = [
+export const MOCK_QUESTIONS: Question[] = [
     {
         id: 'q1',
         question: 'Does it work properly?',

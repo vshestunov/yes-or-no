@@ -18,12 +18,13 @@ export class QuestionsEffects {
     public getQuestions$ = createEffect(() =>
         this.actions$.pipe(
             ofType(questionsActions.getQuestions),
-            exhaustMap(() =>
-                this.api.getQuestions().pipe(
+            exhaustMap(() => {
+                console.log(123)
+                return this.api.getQuestions().pipe(
                     map((questions) => questionsActions.getQuestionsSuccess({ questions })),
                     catchError(() => of(questionsActions.getQuestionsError()))
                 )
-            )
+            })
         )
     )
 

@@ -1,9 +1,9 @@
-import { Component, input, output, signal } from '@angular/core'
+import { Component, Input, output, signal } from '@angular/core'
 import { ChainQuestion, QuestionAnswer } from '../../models'
 import { NgClass } from '@angular/common'
 import { YesNo } from '../../enums'
 
-const QUESTION_CHANGE_TIMEOUT = 500
+export const QUESTION_CHANGE_TIMEOUT = 500
 
 @Component({
     selector: 'yon-question',
@@ -13,7 +13,7 @@ const QUESTION_CHANGE_TIMEOUT = 500
     styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
-    public question = input<ChainQuestion>()
+    @Input() question: ChainQuestion
     public questionAnswered = output<QuestionAnswer>()
 
     public showLoaderForId = signal<string>(null)
@@ -26,5 +26,5 @@ export class QuestionComponent {
         }, QUESTION_CHANGE_TIMEOUT)
     }
 
-    protected readonly yesNo = YesNo
+    public readonly yesNo = YesNo
 }

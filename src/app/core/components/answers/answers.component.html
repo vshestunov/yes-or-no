@@ -1,5 +1,5 @@
 <div class="answers">
-    @if (getChainQuestion(question()); as chainQuestion) {
+    @if (getChainQuestion(question); as chainQuestion) {
         <div class="answers__question-wrapper">
             <h4 class="answers__question app-h4">{{ chainQuestion.question }}</h4>
             <div class="answers__question-answer question-answer">
@@ -9,7 +9,7 @@
                             {{ answer.value }}
                         </div>
                         @if (getChainQuestion(answer.nextStep); as answerQuestion) {
-                            <yon-answers [question]="answerQuestion" [answers]="answers()"></yon-answers>
+                            <yon-answers [question]="answerQuestion" [answers]="answers"></yon-answers>
                         } @else {
                             <yon-result [result]="getResult(answer.nextStep)" [showActionButtons]="false"></yon-result>
                         }

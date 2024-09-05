@@ -1,9 +1,9 @@
 <div class="question">
     <h4 class="question__value">
-        {{ question().question }}
+        {{ question?.question }}
     </h4>
     <div class="question__answers">
-        @for (answer of question().answers; track $index) {
+        @for (answer of question?.answers; track $index) {
             <button
                 class="app-button"
                 [ngClass]="answer.value.toLowerCase() + '-button'"

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Answer, ChainQuestion, FinalQuestion, Question, QuestionAnswer } from '../../models'
 import { NgClass } from '@angular/common'
 import { ResultComponent } from '../result/result.component'
@@ -11,18 +11,18 @@ import { ResultComponent } from '../result/result.component'
     styleUrl: './answers.component.scss',
 })
 export class AnswersComponent {
-    public question = input<Question>()
-    public answers = input<Answer[]>()
+    @Input() public question: Question
+    @Input() public answers: Answer[]
 
     public getChainQuestion(question: Question): ChainQuestion {
-        return 'answers' in question ? question : null
+        return question && 'answers' in question ? question : null
     }
 
     public getResult(question: Question): FinalQuestion {
-        return 'result' in question ? question : null
+        return question && 'result' in question ? question : null
     }
 
     public isAnswerSelected(checkedAnswer: QuestionAnswer): boolean {
-        return this.answers().some((answer) => answer.id === checkedAnswer.id)
+        return this.answers?.some((answer) => answer.id === checkedAnswer.id)
     }
 }

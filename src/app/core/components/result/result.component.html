@@ -3,7 +3,7 @@
         <h4 class="app-h4">
             {{ result()?.result }}
         </h4>
-        @if (result().imageLink; as link) {
+        @if (result()?.imageLink; as link) {
             <img [src]="'../assets/images/' + link" alt="result-image" class="result__image" />
         }
     </div>

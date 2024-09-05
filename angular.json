@@ -94,9 +94,14 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles/styles.scss"
-            ],
+              "styles": [
+                  "src/styles/styles.scss"
+              ],
+              "stylePreprocessorOptions": {
+                  "includePaths": [
+                      "src/styles"
+                  ]
+              },
             "scripts": []
           }
         }
