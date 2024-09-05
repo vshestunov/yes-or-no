@@ -2,7 +2,7 @@
     <h1 class="app-h1">Look at your flow</h1>
     @if (questions()?.length) {
         <yon-answers [question]="questions()[0]" [answers]="answers()"></yon-answers>
-        <button class="app-button no-button" (click)="retakeQuestions()">RETAKE QUESTIONS</button>
+        <button class="app-button no-button answers-page__button" (click)="retakeQuestions()">RETAKE QUESTIONS</button>
     } @else {
         <h2>
             Nothing to show yet. Answer some

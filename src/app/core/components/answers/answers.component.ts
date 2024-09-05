@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core'
-import { Answer, ChainQuestion, Question, QuestionAnswer } from '../../models'
+import { Answer, ChainQuestion, FinalQuestion, Question, QuestionAnswer } from '../../models'
 import { NgClass } from '@angular/common'
 import { ResultComponent } from '../result/result.component'
 
@@ -18,8 +18,8 @@ export class AnswersComponent {
         return 'answers' in question ? (question as ChainQuestion) : null
     }
 
-    public getResult(question: Question): string {
-        return 'result' in question ? question.result : ''
+    public getResult(question: Question): FinalQuestion {
+        return 'result' in question ? (question as FinalQuestion) : null
     }
 
     public isAnswerSelected(checkedAnswer: QuestionAnswer): boolean {

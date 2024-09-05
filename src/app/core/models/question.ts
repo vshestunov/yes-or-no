@@ -17,6 +17,7 @@ export interface ChainQuestion extends BaseQuestion {
 
 export interface FinalQuestion extends BaseQuestion {
     result: string
+    imageLink?: string
 }
 
 export type Question = ChainQuestion | FinalQuestion

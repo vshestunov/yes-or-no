@@ -6,7 +6,7 @@
         }
         @if (isResult()) {
             <yon-result
-                [result]="finalQuestion().result"
+                [result]="finalQuestion()"
                 [showActionButtons]="true"
                 (retakeQuestions)="retakeQuestions()"
                 (openQuestionsTree)="openQuestionsTree()"

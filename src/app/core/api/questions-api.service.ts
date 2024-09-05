@@ -37,7 +37,8 @@ const MOCK_QUESTIONS: Question[] = [
                                         id: 'a3-2',
                                         nextStep: {
                                             id: 'q4-2',
-                                            result: 'Use tape',
+                                            result: 'Use this',
+                                            imageLink: 'wd-40.webp',
                                         },
                                     },
                                 ],
@@ -55,7 +56,8 @@ const MOCK_QUESTIONS: Question[] = [
                                         id: 'a3-3',
                                         nextStep: {
                                             id: 'q4-3',
-                                            result: 'USE WD-40',
+                                            result: 'Use this',
+                                            imageLink: 'tape.png',
                                         },
                                     },
                                     {

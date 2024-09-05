@@ -1,7 +1,12 @@
 <div class="result">
-    <h4 class="app-h4">
-        {{ result() }}
-    </h4>
+    <div class="result__content">
+        <h4 class="app-h4">
+            {{ result()?.result }}
+        </h4>
+        @if (result().imageLink; as link) {
+            <img [src]="'../assets/images/' + link" alt="result-image" class="result__image" />
+        }
+    </div>
     @if (showActionButtons()) {
         <div class="result__actions">
             <button class="app-button no-button" (click)="retakeQuestions.emit()">RETAKE QUESTIONS</button>

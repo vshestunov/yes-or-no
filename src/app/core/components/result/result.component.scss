@@ -1,8 +1,17 @@
+:host {
+    max-width: 100%;
+}
+
 .result {
     display: flex;
     flex-direction: column;
     gap: 24px;
     align-items: center;
+}
+
+.result__image {
+    width: 200px;
+    max-width: 100%;
 }
 
 .result__actions {

@@ -51,6 +51,10 @@
 }
 
 .question-answer__value {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     border: 1px solid black;
     border-radius: 4px;
