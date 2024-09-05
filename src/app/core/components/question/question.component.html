@@ -12,7 +12,7 @@
                 (click)="answerSelected(answer)"
             >
                 @if (showLoaderForId() === answer.id) {
-                    <span class="app-loader" [class.inverted-colors]="answer.value === YesNo.YES"></span>
+                    <span class="app-loader" [class.inverted-colors]="answer.value === yesNo.YES"></span>
                 } @else {
                     {{ answer.value }}
                 }

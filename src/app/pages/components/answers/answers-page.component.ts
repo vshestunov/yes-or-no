@@ -1,4 +1,4 @@
-import { Component, OnInit, Signal } from '@angular/core'
+import { Component, Signal } from '@angular/core'
 import { QuestionsFacadeService } from '../../../core/store/questions/questions-facade.service'
 import { QuestionComponent, ResultComponent } from '../../../core/components'
 import { Answer, Question } from '../../../core/models'
@@ -12,7 +12,7 @@ import { AppRoutes } from '../../../core/enums'
     templateUrl: './answers-page.component.html',
     styleUrl: './answers-page.component.scss',
 })
-export class AnswersPageComponent implements OnInit {
+export class AnswersPageComponent {
     public questions: Signal<Question[]>
     public answers: Signal<Answer[]>
 
@@ -22,8 +22,6 @@ export class AnswersPageComponent implements OnInit {
         this.questions = this.facade.questions
         this.answers = this.facade.answers
     }
-
-    public ngOnInit(): void {}
 
     public retakeQuestions(): void {
         this.facade.retakeQuestions()

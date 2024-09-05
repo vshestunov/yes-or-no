@@ -3,6 +3,8 @@ import { ChainQuestion, QuestionAnswer } from '../../models'
 import { NgClass } from '@angular/common'
 import { YesNo } from '../../enums'
 
+const QUESTION_CHANGE_TIMEOUT = 500
+
 @Component({
     selector: 'yon-question',
     standalone: true,
@@ -21,8 +23,8 @@ export class QuestionComponent {
         setTimeout(() => {
             this.showLoaderForId.set(null)
             this.questionAnswered.emit(answer)
-        }, 500)
+        }, QUESTION_CHANGE_TIMEOUT)
     }
 
-    protected readonly YesNo = YesNo
+    protected readonly yesNo = YesNo
 }

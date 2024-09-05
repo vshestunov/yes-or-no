@@ -15,11 +15,11 @@ export class AnswersComponent {
     public answers = input<Answer[]>()
 
     public getChainQuestion(question: Question): ChainQuestion {
-        return 'answers' in question ? (question as ChainQuestion) : null
+        return 'answers' in question ? question : null
     }
 
     public getResult(question: Question): FinalQuestion {
-        return 'result' in question ? (question as FinalQuestion) : null
+        return 'result' in question ? question : null
     }
 
     public isAnswerSelected(checkedAnswer: QuestionAnswer): boolean {

@@ -7,9 +7,9 @@ import {
     selectQuestionsLoading,
     selectQuestionsValue,
 } from './questions.features'
-import * as QuestionsActions from './questions.actions'
+import * as questionsActions from './questions.actions'
 import { toSignal } from '@angular/core/rxjs-interop'
-import { Answer, QuestionAnswer } from '../../models'
+import { QuestionAnswer } from '../../models'
 import { Router } from '@angular/router'
 import { AppRoutes } from '../../enums'
 
@@ -26,28 +26,18 @@ export class QuestionsFacadeService {
         private store: Store<QuestionsState>,
         private router: Router
     ) {
-        this.questions = toSignal(
-            this.store.select(selectQuestionsValue)
-        )
-        this.questionsLoading = toSignal(
-            this.store.select(selectQuestionsLoading)
-        )
-        this.activeQuestion = toSignal(
-            this.store.select(selectActiveQuestion)
-        )
-        this.answers = toSignal(
-            this.store.select(selectAnswersValue)
-        )
+        this.questions = toSignal(this.store.select(selectQuestionsValue))
+        this.questionsLoading = toSignal(this.store.select(selectQuestionsLoading))
+        this.activeQuestion = toSignal(this.store.select(selectActiveQuestion))
+        this.answers = toSignal(this.store.select(selectAnswersValue))
     }
 
     public getQuestions(): void {
-        this.store.dispatch(QuestionsActions.getQuestions())
+        this.store.dispatch(questionsActions.getQuestions())
     }
 
     public saveAnswer(answer: QuestionAnswer): void {
-        this.store.dispatch(
-            QuestionsActions.saveAnswer({ answer })
-        )
+        this.store.dispatch(questionsActions.saveAnswer({ answer }))
     }
 
     public openQuestionsTree(): void {
@@ -55,8 +45,6 @@ export class QuestionsFacadeService {
     }
 
     public retakeQuestions(): void {
-        this.store.dispatch(
-            QuestionsActions.retakeQuestions()
-        )
+        this.store.dispatch(questionsActions.retakeQuestions())
     }
 }

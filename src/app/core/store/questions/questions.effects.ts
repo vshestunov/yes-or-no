@@ -1,17 +1,8 @@
 import { inject, Injectable } from '@angular/core'
-import * as QuestionsActions from './questions.actions'
-import {
-    Actions,
-    createEffect,
-    ofType,
-} from '@ngrx/effects'
+import * as questionsActions from './questions.actions'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { of } from 'rxjs'
-import {
-    exhaustMap,
-    map,
-    catchError,
-    tap,
-} from 'rxjs/operators'
+import { exhaustMap, map, catchError, tap } from 'rxjs/operators'
 import { QuestionsApiService } from '../../api/questions-api.service'
 import { Router } from '@angular/router'
 import { AppRoutes } from '../../enums'
@@ -24,34 +15,24 @@ export class QuestionsEffects {
         private router: Router
     ) {}
 
-    getQuestions$ = createEffect(() =>
+    public getQuestions$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(QuestionsActions.getQuestions),
+            ofType(questionsActions.getQuestions),
             exhaustMap(() =>
                 this.api.getQuestions().pipe(
-                    map((questions) =>
-                        QuestionsActions.getQuestionsSuccess(
-                            { questions }
-                        )
-                    ),
-                    catchError(() =>
-                        of(
-                            QuestionsActions.getQuestionsError()
-                        )
-                    )
+                    map((questions) => questionsActions.getQuestionsSuccess({ questions })),
+                    catchError(() => of(questionsActions.getQuestionsError()))
                 )
             )
         )
     )
 
-    retakeQuestions$ = createEffect(
+    public retakeQuestions$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(QuestionsActions.retakeQuestions),
+                ofType(questionsActions.retakeQuestions),
                 tap(() => {
-                    this.router
-                        .navigateByUrl(AppRoutes.Questions)
-                        .then()
+                    this.router.navigateByUrl(AppRoutes.Questions).then()
                 })
             ),
         { dispatch: false }
