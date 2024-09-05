@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href https://vshestunov.github.io/yes-or-no/",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint . --ext .ts,.js,.html",
     "test": "ng test"
